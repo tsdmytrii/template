@@ -1,0 +1,27 @@
+<form class="form-inline attributeForm">
+    <input type="hidden" class="attrId" value="" name="id" />
+    <input type="hidden" value="${placeholder_id}" name="placeholder_id" />
+
+    <div class="form-group">
+        <label class="sr-only" for="key">${lang.placeholder.key}</label>
+        <div>
+            <input class="form-control" value="" type="text" name="key" placeholder="${lang.placeholder.key}" />
+            <span class="help help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="value">${lang.placeholder.value}</label>
+        <div>
+            <input class="form-control" value="" type="text" name="value" placeholder="${lang.placeholder.value}" />
+            <span class="help help-block"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-default saveAttr">
+            <span class="glyphicon glyphicon-ok" title="${lang.placeholder.saveAttribute}"></span>
+        </button>
+        <button type="button" class="btn btn-danger deleteAttr">
+            <span class="glyphicon glyphicon-remove" title="${lang.placeholder.removeAttribute}"></span>
+        </button>
+    </div>
+</form>

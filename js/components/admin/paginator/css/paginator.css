@@ -1,0 +1,17 @@
+#paginator .pagination {
+    margin: 0;
+}
+
+.pagination > li > span.current, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #2980B9;
+    border-color: #2980B9;
+    color: #FFFFFF;
+    cursor: default;
+    z-index: 2;
+}
+
+.pagination > li.prev > span.current, .pagination > li.next > span.current {
+    background-color: #FFFFFF;
+    border-color: #DDDDDD;
+    color: #888;
+}

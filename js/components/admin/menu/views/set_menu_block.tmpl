@@ -1,0 +1,55 @@
+<form class="form-horizontal" id="menuBlockForm">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.menu.info}</h3>
+        </div>
+        <div class="panel-body">
+
+            <input type="hidden" value="{{if our_data}}${our_data.id}{{/if}}" name="id" id="menu_block_id" />
+
+            <div class="form-group">
+                <label for="position" class="col-md-3 control-label">${lang.position}:</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" value="{{if our_data}}${our_data.position}{{/if}}" name="position" />
+                    <span class="help help-block"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="position" class="col-md-3 control-label">${lang.menu.role}:</label>
+                <div class="col-md-8">
+                    {{if lang.menu.roles}}
+                        <select name="role" class="form-control">
+                            {{each($i, $val) lang.menu.roles}}
+                                <option {{if $val == our_data.role}}selected{{/if}} value="${$val}">${$val}</option>
+                            {{/each}}
+                        </select>
+                    {{/if}}
+                    <span class="help help-block"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="col-md-3 control-label">${lang.name}:</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" value="{{if our_data}}${our_data.name}{{/if}}" name="name" />
+                    <span class="help help-block"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-actions">
+
+        <div class='pull-right'>
+            <button class="btn btn-primary" type="submit">${lang.save}</button>
+            <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+        </div>
+
+    </div>
+
+    <div class="clear"></div>
+
+</form>

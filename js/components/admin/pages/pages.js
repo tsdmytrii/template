@@ -1,0 +1,11 @@
+steal(
+    'resources/plugins/datatables/demo_table.css',
+    'resources/plugins/datatables/jquery.dataTables.js',
+    'resources/plugins/jquery.autocomplete.js'
+)
+.then(
+    './css/pages.css',
+    './controllers/pages_controller',
+    './controllers/page_controller',
+    './models/pages_model'
+);

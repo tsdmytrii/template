@@ -1,0 +1,39 @@
+<div class="btn-group">
+    <a href="#articlesList" class="btn btn-default active tab">${lang.article.article_items}</a>
+    <a href="#articlePageData" class="btn btn-default tab">${lang.article.page_settings}</a>
+</div>
+
+<div id="articlesContent">
+
+    <div id="articlesList">
+
+        <div id="articleManipulation">
+
+            <div class="btn btn-primary add_article"><span class="glyphicon glyphicon-plus"></span> ${lang.article.add}</div>
+
+            <div class="articleQuantity">
+                ${lang.on_page}:
+            </div>
+            <div class='btn-group'>
+                <div data-limit="20" class="btn btn-default quantity active">20</div>
+                <div data-limit="40" class="btn btn-default quantity">40</div>
+                <div data-limit="60" class="btn btn-default quantity">60</div>
+                <div data-limit="80" class="btn btn-default quantity">80</div>
+                <div data-limit="100" class="btn btn-default quantity">100</div>
+            </div>
+
+            <div id="paginator"></div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="articlesList"></div>
+
+    </div>
+
+    <div id="articlePageData" style="display: none;">
+
+    </div>
+
+</div>

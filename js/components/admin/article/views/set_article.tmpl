@@ -1,0 +1,148 @@
+<div id="set_article_wrapper" class="current_cont">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.article_item.date}</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" id="articleItemInfoForm">
+                <input type="hidden" name="id" id="article_item_id" value="{{if our_data}}${our_data.id}{{/if}}"/>
+                <input type="hidden" name="article_id" id="article_id" value="{{if article_id}}${article_id}{{/if}}"/>
+
+                <div class="form-group">
+                    <label for="date_time" class="col-md-3 control-label">${lang.article_item.date_time}</label>
+                    <div class="col-md-5">
+                        <div class='input-group date' id='date_time'>
+                            <input name="date_time" type='text' class="form-control" value="{{if our_data}}${our_data.date_time}{{/if}}"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="display" class="col-md-8 control-label">${lang.article_item.finished}</label>
+                    <div class="col-md-3">
+                        <input type="checkbox" name="display" value="1" id="display" {{if our_data}}{{if our_data.display == 1}}checked{{/if}}{{/if}}/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="main" class="col-md-8 control-label">${lang.article_item.main}</label>
+                    <div class="col-md-3">
+                        <input type="checkbox" name="main" value="1" id="main" {{if our_data}}{{if our_data.main == 1}}checked{{/if}}{{/if}} />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="btn-group" style="margin-bottom: 15px;">
+
+        {{each($i, $val) langs}}
+            <a href="#langContent${$val.id}" class="tab btn btn-default{{if $i == 0}} active{{/if}}">${$val.name}</a>
+        {{/each}}
+
+    </div>
+
+    {{each($i, $val) langs}}
+
+        <div id="langContent${$val.id}" {{if $i != 0}}style="display: none;"{{/if}}>
+
+             <form class="form-horizontal articleItemForm">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">${lang.article_item.info}</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <input class="lang_id" type="hidden" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].id}{{/if}}{{else}}0{{/if}}" name="article_lang_id"/>
+                        <input class="language_id" type="hidden" value="${$val.id}" name="language_id"/>
+
+                        <div class="form-group">
+                            <label for="title" class="col-md-3 control-label">${lang.article_item.title}</label>
+                            <div class="col-md-8">
+                                <input class="title form-control" id='name_${$val.iso_code}' type="text" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].title}{{/if}}{{/if}}" name="title">
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author" class="col-md-3 control-label">${lang.article_item.author}</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].author}{{/if}}{{/if}}" name="author">
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="col-md-3 control-label">${lang.article_item.description}</label>
+                            <div class="col-md-8">
+                                <textarea class="content_desc" name="description">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].description}{{/if}}{{/if}}</textarea>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">${lang.article_item.seo}</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group col-md-6">
+                            <label for="link" class="col-md-3 control-label">${lang.article_item.link}</label>
+                            <div class="col-md-8">
+                                <input class="link_id" type="hidden" value="{{if our_data}}{{if our_data.links && our_data.links[$val.iso_code] }}${our_data.links[$val.iso_code].id}{{/if}}{{/if}}" name="link_id"/>
+                                <input class="form-control" id="link_${$val.iso_code}" type="text" value="{{if our_data}}{{if our_data.links && our_data.links[$val.iso_code] }}${our_data.links[$val.iso_code].link}{{/if}}{{/if}}" name="link"/>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="seo_title" class="col-md-3 control-label">${lang.article_item.seo_title}</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control keywords" name="seo_title" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].seo_title}{{/if}}{{/if}}"/>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="key_words" class="col-md-3 control-label">${lang.article_item.key_words}</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control keywords" name="key_words">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].key_words}{{/if}}{{/if}}</textarea>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="seo_description" class="col-md-3 control-label">${lang.article_item.seo_description}</label>
+                            <div class="col-md-8">
+                                <textarea class="description form-control seo_content_desc" name="seo_description">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].seo_description}{{/if}}{{/if}}</textarea>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class='pull-right'>
+                        <button class="btn btn-primary" type="submit">${lang.save}</button>
+                        <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+            </form>
+
+        </div>
+
+    {{/each}}
+
+</div>

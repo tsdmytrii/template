@@ -1,0 +1,33 @@
+{{if our_data}}
+    {{each($data_key, $data_value) our_data}}
+    <tr class="miniBlockComponent" data-mini_block_id="${$data_value.id}">
+        <td>${$data_value.id}</td>
+        <td>
+            {{if $data_value.lang && $data_value.lang[pref]}}
+
+                ${$data_value.lang[pref].name}
+
+            {{else}}
+
+                ${( continueVariable = true ),''}
+
+                {{each($lang_key, $lang_value) $data_value.lang}}
+
+                    {{if $lang_key && continueVariable}}
+                        ${$lang_value.name}
+                        ${( continueVariable = false ),''}
+                    {{/if}}
+
+                {{/each}}
+
+            {{/if}}
+        </td>
+        <td>
+            <div data-mini_block_id="${$data_value.id}" class="mini_block_icon_wrap pull-right">
+                <div class="btn btn-xs btn-default editMiniBlock"><i class="glyphicon glyphicon-pencil" title="${$data.lang.miniBlock.upd}"></i></div>
+                <div class="btn btn-xs btn-danger deleteMiniBlock"><i class="glyphicon glyphicon-trash" title="${$data.lang.miniBlock.remove}"></i></div>
+            </div>
+        </td>
+    </tr>
+    {{/each}}
+{{/if}}

@@ -1,0 +1,14 @@
+{{if our_data}}
+    {{each($data_key, $data_value) our_data}}
+    <tr class="integratorComponent" data-id="${$data_value.id}">
+        <td>${$data_value.id}</td>
+        <td>${$data_value.name}</td>
+        <td>
+            <div data-id="${$data_value.id}" class="integrator_icon_wrap pull-right">
+                <div class="btn btn-xs btn-default editIntegrator"><i class="glyphicon glyphicon-pencil" title="${$data.lang.integrator.upd}"></i></div>
+                <div class="btn btn-xs btn-danger deleteIntegrator"><i class="glyphicon glyphicon-trash" title="${$data.lang.integrator.remove}"></i></div>
+            </div>
+        </td>
+    </tr>
+    {{/each}}
+{{/if}}

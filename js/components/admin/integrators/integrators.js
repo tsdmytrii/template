@@ -1,0 +1,14 @@
+steal(
+    'resources/plugins/datatables/demo_table.css',
+    'resources/plugins/datatables/jquery.dataTables.js',
+    'resources/plugins/jquery.autocomplete.js'
+)
+    .then(
+        './css/integrators.css',
+        './controllers/integrators_controller',
+        './controllers/integrator_controller',
+        './models/integrators_model'
+    )
+    .then(
+        '../placeholder/placeholder'
+    );

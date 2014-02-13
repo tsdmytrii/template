@@ -1,0 +1,60 @@
+<div class="btn-group">
+
+    <a href="#integratorContentTab" class="btn btn-default active tab">${lang.integrator.main_info}</a>
+
+    <a href="#integratorPlaceholdersTab" class="btn btn-default tab{{if !our_data}} disabled{{/if}}">${lang.integrator.placeholders}</a>
+
+</div>
+
+<div id="compWrap" style="margin: 15px 0 0 0;">
+
+    <div class="current integratorTabCont" id="integratorContentTab">
+        <form class="form-horizontal" id="integratorForm">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">${lang.integrator.info}</h3>
+                </div>
+                <div class="panel-body">
+
+                    <input type="hidden" name="id" id="id" value="{{if our_data}}${our_data.id}{{/if}}"/>
+
+                    <div class="form-group">
+                        <label for="name" class="col-md-3 control-label">${lang.integrator.name}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="name" value="{{if our_data}}${our_data.name}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <div class='pull-right'>
+                    <button class="btn btn-primary setIntegrator" type="submit">${lang.save}</button>
+                    <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </form>
+    </div>
+
+    <div class="integratorTabCont" id="integratorPlaceholdersTab">
+
+        <div class='btn btn-primary' id='addPlaceholder'>${lang.integrator.addPlaceholder}</div>
+
+        <div class="panel panel-primary" style="margin-top: 15px;">
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.integrator.integratorPlaceholders}</h3>
+            </div>
+            <div class="panel-body placeholderForms" id="placeholderForms">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

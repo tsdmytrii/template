@@ -1,0 +1,97 @@
+<div style="padding: 20px 20px 0;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.user.info}
+                {{if $data.user && $data.user.last_login}}${lang.user.last_login}: ${$.processTimestamp($data.user.last_login)}{{/if}}
+            </h3>
+        </div>
+        <div class="panel-body">
+
+            <form id="set_user_form" class="form form-horizontal">
+
+                <input type="hidden" name="id" class="user_id" value="{{if $data.user && $data.user.id}}${$data.user.id}{{/if}}" />
+
+                <div class="form-group">
+                    <label for="username" class="col-md-3 control-label">${lang.user.username}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="username" value="{{if $data.user && $data.user.username}}${$data.user.username}{{/if}}"/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-md-3 control-label">${lang.user.email}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="email" value="{{if $data.user && $data.user.email}}${$data.user.email}{{/if}}"/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-md-3 control-label">${lang.user.password}</label>
+                    <div class="col-md-8">
+                        <input id="password" class="form-control" type="password" name="password" value=""/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password" class="col-md-3 control-label">${lang.user.conf_password}</label>
+                    <div class="col-md-8">
+                        <input id="confirm_password" class="form-control" type="password" name="confirm_password" value=""/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="col-md-3 control-label">${lang.user.name}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="name" value="{{if $data.user && $data.user.first_name}}${$data.user.first_name}{{/if}}"/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surname" class="col-md-3 control-label">${lang.user.surname}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="surname" value="{{if $data.user && $data.user.last_name}}${$data.user.last_name}{{/if}}"/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="col-md-3 control-label">${lang.user.phone}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="phone" value="{{if $data.user && $data.user.phone}}${$data.user.phone}{{/if}}"/>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group allGroups" style="{{if !$data.user}}display: none;{{/if}}">
+                    <label for="group" class="col-md-3 control-label">${lang.user.group}</label>
+                    <div class="col-md-8">
+                        {{if $data.groups}}
+                            <select class="form-control" name="group_id">
+                                <option value="0">Нет группы</option>
+                                {{each($i, $val) $data.groups}}
+                                    {{if parseInt($val.removed) == 1}}
+                                        <option {{if $data.user.group && $data.user.group.id == $val.id}}selected{{/if}} value="${$val.id}">${$val.clear_name}</option>
+                                    {{/if}}
+                                {{/each}}
+                            </select>
+                        {{/if}}
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class='pull-right'>
+                        <button class="btn btn-primary" type="submit">${lang.save}</button>
+                        <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

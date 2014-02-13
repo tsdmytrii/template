@@ -1,0 +1,30 @@
+<div class="btn btn-primary add_group"><span class="glyphicon glyphicon-plus"></span> ${lang.group.add}</div>
+<table id="datatable" class="table table-bordered table-hover" style="margin-top: 15px;">
+    <thead>
+        <tr>
+            <th style="width: 5%;" class="id">ID</th>
+            <th style="width: 25%;" class="name">${lang.group.name}</th>
+            <th style="width: 60%;" class="name">${lang.group.description}</th>
+            <th style="width: 10%;" class="action">${lang.action}</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {{each($i, $val) our_data.data}}
+            <tr id="group_${$val.id}">
+                <td>${$val.id}</td>
+                <td>${$val.clear_name}</td>
+                <td>${$val.description}</td>
+                <td>
+                    {{if parseInt($val.removed) === 1}}
+                    <div class="group_icon_wrap pull-right" data-group_id="${$val.id}">
+                        <div class="btn btn-xs btn-default edit_group"><i class="glyphicon glyphicon-pencil" title="${lang.group.upd}"></i></div>
+                        <div class="btn btn-xs btn-danger delete_group"><i class="glyphicon glyphicon-trash" title="${lang.group.remove}"></i></div>
+                    </div>
+                    {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+
+    </tbody>
+</table>

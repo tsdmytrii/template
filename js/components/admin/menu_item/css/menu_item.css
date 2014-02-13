@@ -1,0 +1,7 @@
+.menuItemTab {
+    display: none;
+}
+
+.menuItemTab.current_set {
+    display: block;
+}

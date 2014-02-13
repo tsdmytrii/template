@@ -1,0 +1,15 @@
+.placeHolderContent {
+    display: none;
+}
+
+.placeHolderContent.current {
+    display: block;
+}
+
+.attributeForm, .miniBlockForm, .productBlockForm {
+    margin-bottom: 10px;
+}
+
+#addPlaceholderAttribute, #addMiniBlock, #addProductBlock {
+    margin-bottom: 15px;
+}

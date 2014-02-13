@@ -1,0 +1,54 @@
+#integratorTableWrapper {
+    margin-top: 15px;
+}
+
+#integratorTableWrapper input, #integratorTableWrapper select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+}
+
+#integratorTable {
+    clear: both;
+}
+
+#integratorTablePaginate a {
+    margin-left: 10px;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.control-group label {
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+.placeholderForm {
+    margin-bottom: 5px;
+}
+
+#integratorPlaceholdersTab {
+    display: none;
+}
+
+#integratorIntegrators, #integratorPlaceholders, #integratorBlocks {
+    float: left;
+    width: 31%;
+}
+#integratorIntegrators, #integratorPlaceholders {
+    margin-right: 3%;
+}
+
+.integratorComponent:hover, .placeholderComponent:hover, .miniBlockComponent:hover, .productBlockComponent:hover {
+    cursor: pointer;
+}

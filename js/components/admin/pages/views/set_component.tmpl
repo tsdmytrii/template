@@ -1,0 +1,39 @@
+<form class="set_comp_form form-horizontal">
+        <input id="component_id" type="hidden" name="id" value="{{if our_data}}${our_data.id}{{/if}}" />
+
+        <div class="form-group">
+            <label for="name" class="col-md-3 control-label">${lang.page.name}:</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="name" value="{{if our_data}}${our_data.name}{{/if}}" />
+                <span class="help help-block"></span>
+            </div>
+        </div>
+
+        {{if our_data == false}}
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="component_type_id">${lang.page.type}</label>
+                <div class="col-md-8">
+                    <select class="form-control" name="component_type_id">
+                        {{if types}}
+                            {{each($i, $value) $data.types}}
+                                <option value="${$value.id}">${$value.psevdo_name}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                    <span class="help help-block"></span>
+                </div>
+            </div>
+        {{else}}
+            <input type="hidden" name="component_type_id" value="${our_data.component_type_id}" />
+        {{/if}}
+
+        <div class="form-actions">
+            <div class='pull-right'>
+                <button class="btn btn-primary" type="submit">${lang.save}</button>
+                <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+</form>

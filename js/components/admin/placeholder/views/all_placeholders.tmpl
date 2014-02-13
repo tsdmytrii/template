@@ -1,0 +1,14 @@
+{{if our_data}}
+    {{each($data_key, $data_value) our_data}}
+    <tr class="placeholderComponent" data-placeholder_id="${$data_value.id}">
+        <td>${$data_value.id}</td>
+        <td>${$data_value.name}</td>
+        <td>
+            <div data-placeholder_id="${$data_value.id}" class="placeholder_icon_wrap pull-right">
+                <div class="btn btn-xs btn-default editPlaceholder"><i class="glyphicon glyphicon-pencil" title="${$data.lang.placeholder.upd}"></i></div>
+                <div class="btn btn-xs btn-danger deletePlaceholder"><i class="glyphicon glyphicon-trash" title="${$data.lang.placeholder.remove}"></i></div>
+            </div>
+        </td>
+    </tr>
+    {{/each}}
+{{/if}}

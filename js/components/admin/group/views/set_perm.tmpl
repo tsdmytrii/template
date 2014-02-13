@@ -1,0 +1,86 @@
+{{if our_data}}
+    <form id='permissionForm' class='form-horizontal'>
+
+        <h3>${lang.group.static}</h3>
+
+        {{each($i, $val) our_data}}
+
+            {{if parseInt($val.tab_id) !== 0}}
+
+                {{if $val.functions}}
+                    <div class='componentTypePerm'>
+
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <input type="checkbox" value="${$val.id}" name='component_type' class='allPermissions' />${$val.psevdo_name}
+                            </li>
+                            {{each($j, $v) $val.functions}}
+                                <li class="list-group-item">
+                                    <input class='component_function_id' type="checkbox" value='${$v.id}' name='component_function_id[]' {{if $v.related}}checked{{/if}} />
+                                    {{if $v.clear_name}}
+                                        ${$v.clear_name}
+                                    {{else}}
+                                        ${$val.library}::${$v.name}
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </ul>
+
+                    </div>
+
+                {{/if}}
+
+                {{if (($i+1) % 2) === 0}}
+                    <div class='clear'></div>
+                {{/if}}
+
+            {{/if}}
+
+        {{/each}}
+        <div class="clear"></div>
+        <h3>${lang.group.dynamic}</h3>
+
+        {{each($i, $val) our_data}}
+
+            {{if parseInt($val.tab_id) === 0}}
+
+                {{if $val.functions}}
+                    <div class='componentTypePerm'>
+
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <input type="checkbox" value="${$val.id}" name='component_type' class='allPermissions' />${$val.psevdo_name}
+                            </li>
+                            {{each($j, $v) $val.functions}}
+                                <li class="list-group-item">
+                                    <input class='component_function_id' type="checkbox" value='${$v.id}' name='component_function_id[]' {{if $v.related}}checked{{/if}} />
+                                    {{if $v.clear_name}}
+                                        ${$v.clear_name}
+                                    {{else}}
+                                        ${$val.library}::${$v.name}
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </ul>
+
+                    </div>
+
+                {{/if}}
+
+                {{if (($i+1) % 2) === 0}}
+                    <div class='clear'></div>
+                {{/if}}
+
+            {{/if}}
+
+        {{/each}}
+
+        <div class="clear"></div>
+            <div>
+                <button class="btn btn-primary" type="submit">${lang.save}</button>
+                <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+            </div>
+
+        <div class="clear"></div>
+    </form>
+{{/if}}

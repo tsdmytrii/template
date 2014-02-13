@@ -1,0 +1,44 @@
+<table style="margin-top: 15px;" class="table table-hover">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>${lang.article_item.title}</th>
+            <th>${lang.article_item.link}</th>
+            <th>${lang.article_item.published}</th>
+            <th>${lang.article_item.date_time}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+
+    <tbody class="articleItemWrap">
+
+        {{each($i, $val) our_data}}
+            <tr class="{{if parseInt($val.display) == 1}}display{{/if}}">
+                <td>${$val.id}</td>
+                <td>${$val.lang[pref].title}</td>
+                <td>
+                    {{if $val.links && $val.links[pref]}}
+                        ${$val.links[pref].link}
+                    {{/if}}
+                </td>
+                <td>
+                    {{if $val.display == 1}}
+                        <span class="label label-success">${$data.lang.yes}</span>
+                    {{else}}
+                        <span class="label label-danger">${$data.lang.no}</span>
+                    {{/if}}
+                </td>
+                <td>${$val.date_time}</td>
+                <td>
+                    <div data-article_item_id="${$val.id}" class="article_icon_wrap pull-right">
+                        <div class="btn btn-xs btn-default editArticle"><i class="glyphicon glyphicon-pencil" title="${$data.lang.article.upd}"></i></div>
+                        <div class="btn btn-xs btn-danger deleteArticle"><i class="glyphicon glyphicon-trash" title="${$data.lang.article.remove}"></i></div>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+
+    </tbody>
+
+</table>

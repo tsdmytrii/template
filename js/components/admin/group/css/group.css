@@ -1,0 +1,42 @@
+.units_list {
+    margin-top: 10px;
+}
+
+.unit_item {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #BBBBBB;
+    margin: 5px 10px 5px 0;
+    padding: 2px 5px;
+}
+
+.unit_caption {
+    float: left;
+}
+
+.content_lang {
+    display: none;
+}
+
+.content_lang.current {
+    display: block;
+}
+
+.groupTabContent {
+    display: none;
+}
+
+.groupTabContent.current {
+    display: block;
+}
+
+.componentTypePerm {
+    width: 45%;
+    float: left;
+    margin-right: 2.5%;
+}
+
+#permissionForm .form-actions {
+  bottom: -50px;
+  position: absolute;
+  width: 65%;
+}

@@ -1,0 +1,27 @@
+<div id="addPlaceholder" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>${lang.placeholder.add}</div>
+
+<table style="margin-top: 15px;" class="table tableBordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>${lang.placeholder.name}</th>
+            <th>${lang.placeholder.description}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{each($i, $val) our_data}}
+            <tr>
+                <td>${$val.id}</td>
+                <td>${$val.name}</td>
+                <td>${$val.description}</td>
+                <td>
+                    <div data-placeholder_id="${$val.id}" class="placeholder_icon_wrap pull-right">
+                        <div class="btn btn-xs btn-default editPlaceholder"><i class="glyphicon glyphicon-pencil"></i></div>
+                        <div class="btn btn-xs btn-danger deletePlaceholder"><i class="glyphicon glyphicon-trash"></i></div>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
