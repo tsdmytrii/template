@@ -1,0 +1,293 @@
+<div class="btn-group">
+
+    <a href="#generalInfo" class="btn btn-default active tab placeholderTab">${lang.placeholder.main_info}</a>
+    <a href="#attributes" class="btn btn-default tab placeholderTab{{if !our_data}} disabled{{/if}}">${lang.placeholder.attributes}</a>
+    <a href="#miniBlocks" class="btn btn-default tab placeholderTab{{if !our_data}} disabled{{/if}}">${lang.placeholder.miniBlocks}</a>
+    <a href="#productBlocks" class="btn btn-default tab placeholderTab{{if !our_data}} disabled{{/if}}">${lang.placeholder.productBlocks}</a>
+
+</div>
+
+<div id="compWrap" style="margin: 15px 0 0 0;">
+
+<div id="generalInfo" class="placeHolderContent placeholderTabCont current">
+
+    <form class="form-horizontal" id="placeHolderForm">
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.placeholder.info}</h3>
+            </div>
+
+            <div class="panel-body">
+
+
+                <input id="placeholder_id" value="{{if our_data}}${our_data.id}{{/if}}" name="id" type="hidden" />
+                <input id="integrator_id" value="{{if our_data}}${our_data.integrator_id}{{else integrator_id}}${integrator_id}{{/if}}" name="integrator_id" type="hidden" />
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="name">${lang.placeholder.name}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="name" value="{{if our_data}}${our_data.name}{{/if}}">
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="identificator">${lang.placeholder.identifier}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="identificator" value="{{if our_data}}${our_data.identificator}{{/if}}">
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="description">${lang.placeholder.description}</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" name="description">{{if our_data}}${our_data.description}{{/if}}</textarea>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="position">${lang.placeholder.position}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="position" value="{{if our_data}}${our_data.position}{{/if}}">
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.placeholder.size}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">${lang.placeholder.widthOptions}</label>
+                    <div class="col-md-8">
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.width_param) == 0}}checked{{/if}} name="width_param" value="0"> ${lang.placeholder.percent}
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.width_param) == 1}}checked{{/if}} name="width_param" value="1"> ${lang.placeholder.ratio}
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.width_param) == 2}}checked{{/if}} name="width_param" value="2"> ${lang.placeholder.modulo}
+                        </label>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="width">${lang.placeholder.widthValue}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="{{if our_data}}${our_data.width}{{/if}}" type="text" name="width" placeholder="${lang.placeholder.width}" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">${lang.placeholder.heightOptions}</label>
+                    <div class="col-md-8">
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.height_param) == 0}}checked{{/if}} name="height_param" value="0"> ${lang.placeholder.percent}
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.height_param) == 1}}checked{{/if}} name="height_param" value="1"> ${lang.placeholder.ratio}
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="radio" {{if our_data && parseInt(our_data.height_param) == 2}}checked{{/if}} name="height_param" value="2"> ${lang.placeholder.modulo}
+                        </label>
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="height">${lang.placeholder.heightValue}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" value="{{if our_data}}${our_data.height}{{/if}}" type="text" name="height" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.placeholder.serverView}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="view">${lang.placeholder.serverView}</label>
+                    <div class="col-md-8 controls">
+                        <input class="form-control miniBlockViewName" value="${our_data.view}" type="text" name="view" placeholder="${lang.placeholder.unessentialField}" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary">${lang.placeholder.savePlaceholder}</button>
+                <button type="button" class="btn cancel">${lang.placeholder.cancel}</button>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+    </form>
+
+</div>
+<div id="attributes" class="placeHolderContent placeholderTabCont">
+
+    <div id="addPlaceholderAttribute" class="btn btn-primary">${lang.placeholder.addNewAttribute}</div>
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.placeholder.addtitionalBlockCSSProperties}</h3>
+        </div>
+
+        <div class="panel-body attributeForms">
+
+            {{if our_data.attributes}}
+                {{each($i, $val) our_data.attributes}}
+                    <form class="form-inline attributeForm">
+                        <input type="hidden" class="attrId" value="${$val.id}" name="id" />
+                        <input type="hidden" value="${our_data.id}" name="placeholder_id" />
+
+                        <div class="form-group">
+                            <label class="sr-only" for="key">${lang.placeholder.key}</label>
+                            <div>
+                                <input disabled="disabled" class="form-control" value="${$val.key}" type="text" name="key" placeholder="${lang.placeholder.key}" />
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="value">${lang.placeholder.value}</label>
+                            <div>
+                                <input disabled="disabled" class="form-control" value="${$val.value}" type="text" name="value" placeholder="${lang.placeholder.value}" />
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default saveAttr">
+                                <span class="glyphicon glyphicon-ok" title="${lang.placeholder.saveAttribute}"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger deleteAttr">
+                                <span class="glyphicon glyphicon-trash" title="${lang.placeholder.removeAttribute}"></span>
+                            </button>
+                        </div>
+                    </form>
+                {{/each}}
+            {{/if}}
+
+        </div>
+    </div>
+
+</div>
+
+<div id="miniBlocks" class="placeHolderContent placeholderTabCont">
+
+    <div id="addMiniBlock" class="btn btn-primary">${lang.placeholder.addRelatedMiniBlock}</div>
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.placeholder.relatedMiniBlocks}</h3>
+        </div>
+
+        <div class="panel-body miniBlockPHContent">
+
+            {{if our_data.mini_blocks}}
+                {{each($i, $val) our_data.mini_blocks}}
+
+                    <form class="form-inline miniBlockForm">
+
+                        <input type="hidden" value="${our_data.id}" name="placeholder_id" />
+
+                        <div class="form-group">
+                            <label class="sr-only" for="key">${lang.placeholder.miniBlock}</label>
+                            <div class="controls">
+                                <input class="miniBlockName form-control" value="${$val.name}" type="text" name="name" placeholder="${lang.placeholder.miniBlock}" />
+                                <input class="miniBlockId" value="${$val.mini_block_id}" type="hidden" name="mini_block_id" />
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default saveMiniBlock">
+                                <span class="glyphicon glyphicon-ok" title="${lang.placeholder.saveRelationWithMiniBlock}"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger deleteMiniBlock">
+                                <span class="glyphicon glyphicon-trash" title="${lang.placeholder.removeRelationWithMiniBlock}"></span>
+                            </button>
+                        </div>
+
+                    </form>
+
+                {{/each}}
+            {{/if}}
+
+        </div>
+    </div>
+
+</div>
+
+<div id="productBlocks" class="placeHolderContent placeholderTabCont">
+
+    <div id="addProductBlock" class="btn btn-primary">${lang.placeholder.addProductBlock}</div>
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.placeholder.relatedProductBlocks}</h3>
+        </div>
+
+        <div class="panel-body miniBlockPHContent" id='productBlockPHContent'>
+
+            {{if our_data.product_blocks}}
+                {{each($i, $val) our_data.product_blocks}}
+
+                    <form class="form-inline productBlockForm">
+
+                        <input type="hidden" value="${our_data.id}" name="placeholder_id" />
+
+                        <div class="form-group">
+                            <label class="sr-only" for="key"></label>
+                            <div class="controls">
+                                <input disabled="" class="productBlockName form-control" value="{{each($j, $v) $data.lang}}{{if $val.lang[$v.iso_code]}}${$val.lang[$v.iso_code].name}{{/if}}{{/each}}" type="text" name="name" placeholder=""/>
+                                <input class="productBlockId" value="${$val.id}" type="hidden" name="mini_block_id" />
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger deleteProductBlock">
+                                <span class="glyphicon glyphicon-trash" title=""></span>
+                            </button>
+                        </div>
+                    </form>
+
+                {{/each}}
+            {{/if}}
+
+        </div>
+    </div>
+
+</div>
+
+</div>

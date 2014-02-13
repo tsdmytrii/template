@@ -1,0 +1,37 @@
+<table id="datatable" class="table table-bordered table-striped" style="margin-top: 15px;">
+    <thead>
+        <tr>
+            <th class="id">#</th>
+            <th class="name">${lang.user.name}</th>
+            <th class="email">${lang.user.email}</th>
+            <th class="reg_date">${lang.user.reg_date}</th>
+            <th class="reg_date">${lang.user.last_login}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{each $data.users}}
+            <tr id="user_${$value.id}">
+                <td class="center">${$value.id}</td>
+                <td>{{if $value.first_name}}${$value.first_name}{{/if}}{{if $value.last_name}} ${$value.last_name}{{/if}}</td>
+                <td>{{if $value.email}}${$value.email}{{/if}}</td>
+                <td>${$.processTimestamp($value.created_on)}</td>
+                <td>${$.processTimestamp($value.last_login)}</td>
+
+                <!--			<td class="center"><input class="display" name="display_ru" type="checkbox"/></td>
+                                        <td class="center"><input class="display" name="display_en" type="checkbox"/></td>-->
+                <td class="center">
+                    <div class="pull-right">
+                        <div class='btn btn-default btn-xs edit_user' id="edit_entry_${$value.id}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </div>
+                        <div class='btn btn-danger btn-xs delete_user' id="delete_entry_${$value.id}">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+
+    </tbody>
+</table>

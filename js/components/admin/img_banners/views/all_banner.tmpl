@@ -1,0 +1,45 @@
+<table style="margin-top: 15px;" class="table table-hover">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>${lang.banner.title}</th>
+            <th>${lang.banner.display}</th>
+            <th>${lang.banner.img}</th>
+            <th>${lang.banner.position}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{each($i, $val) our_data}}
+            <tr class="bannerRow {{if parseInt($val.display) == 0}}hiddenBanner{{/if}}">
+                <td>${$val.id}</td>
+                <td>${$val.lang[pref].title}</td>
+                <td>
+                    {{if parseInt($val.display) == 1}}
+                        <span class='label label-success'>${$data.lang.yes}</span>
+                    {{else}}
+                        <span class='label label-default'>${$data.lang.no}</span>
+                    {{/if}}
+                </td>
+                <td class="bannerImg">
+                    {{if $val.img}}
+                        <img src="${base_url}${directory}/${$val.img.name}"/>
+                        <div class='btn btn-xs btn-danger delete_banner_img' data-img_id="${$val.img.id}"><i class="glyphicon glyphicon-trash"/></div>
+                    {{/if}}
+                </td>
+                <td>${$val.position}</td>
+                <td>
+                    <div data-banner_id="${$val.id}" class="banner_icon_wrap pull-right">
+                        <div class='btn btn-xs btn-default editBanner'><i class="glyphicon glyphicon-pencil"></i></div>
+                        <div class='btn btn-xs btn-danger deleteBanner'><i class="glyphicon glyphicon-trash"></i></div>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+
+    </tbody>
+
+</table>

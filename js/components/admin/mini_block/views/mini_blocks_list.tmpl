@@ -1,0 +1,34 @@
+<div id="mini_block_wrap">
+
+    <div class="btn btn-primary addMiniBlock">Добавить мини-блок</div>
+
+    <div class="clear"></div>
+
+    <table style="margin-top: 15px;" class="table tableBordered table-hover">
+        <thead class="table-head">
+            <tr>
+                <td>ID</td>
+                <td>Название</td>
+                <td>Позиция</td>
+                <td>Действия</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{each($i, $val) our_data}}
+                <tr>
+                    <td>${$val.id}</td>
+                    <td>${$val.lang[pref].name}</td>
+                    <td>${$val.position}</td>
+                    <td>
+                        <div data-mini_block_id="${$val.id}" class="mini_block_icon_wrap pull-right">
+                            <i class="icon-pencil menu_icon editMiniBlock" title="Редактировать мини-блок"></i>
+                            <i class="icon-trash menu_icon deleteMiniBlock" title="Удалить мини-блок"></i>
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+</div>

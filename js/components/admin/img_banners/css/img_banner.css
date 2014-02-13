@@ -1,0 +1,17 @@
+.bannerRow {
+    color: #000;
+}
+
+.bannerRow.hiddenBanner {
+    color: #5F5F5F;
+}
+
+td.bannerImg, #banner_img {
+    width: 220px;
+    text-align: center;
+}
+
+td.bannerImg img, #banner_img img {
+    width: 200px;
+    margin-bottom: 5px;
+}

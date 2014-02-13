@@ -1,0 +1,20 @@
+<form class="form-inline placeholderForm row" role="form">
+
+    <div class="control-group form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="controls">
+            <input value="" class='productName form-control' id='placeholderName${counter}' type="text" name="value" placeholder="${lang.integrator.placeholderName}"/>
+            <input type="hidden" class="placeholderId" value="0" name="placeholder_id" />
+            <input type="hidden" class="integratorId" value="${integrator_id}" name="integrator_id" />
+            <span class="help"></span>
+        </div>
+    </div>
+    <div class="control-group col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <button type="button" class="btn btn-default savePlaceholder">
+            <span class="glyphicon glyphicon-ok" title="${lang.integrator.savePlaceholder}"></span>
+        </button>
+        <button type="button" class="btn btn-danger deletePlaceholder">
+            <span class="glyphicon glyphicon-remove" title="${lang.integrator.removePlaceholder}"></span>
+        </button>
+    </div>
+
+</form>

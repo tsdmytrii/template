@@ -1,0 +1,39 @@
+<table style="margin-top: 15px;" class="table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>${lang.comp_type.name}</th>
+            <th>${lang.comp_type.system}</th>
+            <th>${lang.comp_type.directory}</th>
+            <th>${lang.comp_type.unique}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+
+    <tbody class="componentTypesListTbody">
+
+        {{if our_data}}
+            {{each($i, $val) our_data}}
+                <tr>
+                    <td>${$val.id}</td>
+                    <td>${$val.psevdo_name}</td>
+                    <td>{{if parseInt($val.display) == 1}}<span class='label label-danger'>${lang.no}</span>{{else}}<span class='label label-primary'>${lang.yes}</span>{{/if}}</td>
+                    <td>${$val.admin_client_controller}</td>
+                    <td>{{if parseInt($val.multi) == 1}}<span class='label label-danger'>${lang.no}</span>{{else}}<span class='label label-primary'>${lang.yes}</span>{{/if}}</td>
+                    <td>
+                        <div data-component_type_id="${$val.id}" class="component_type_icon_wrap pull-right">
+                            <div class='btn btn-default btn-xs editComponentType'>
+                                <i class="glyphicon glyphicon-pencil" title="${lang.comp_type.upd}"></i>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+        {{/if}}
+
+    </tbody>
+
+</table>
+
+

@@ -1,0 +1,20 @@
+<div class="paginate">
+    {{if our_data.length}}
+        <a class="paginate_prev">
+            <img src='${site_url}images/pagin_prev.jpg'>
+        </a>
+        <span>
+            {{each($i, $value) our_data}}
+                <a href="${$value}" class="paginate_item{{if $i == 0}} paginate_active{{/if}}{{if $i+1 >= show_numbers && $i+1 !== our_data.length}} hidden{{else}}{{if $i+2 == show_numbers}} last{{/if}}{{/if}}" >
+                    ${$i+1}
+                </a>
+                {{if $i+2 == show_numbers}}
+                    <span>...</span>
+                {{/if}}
+            {{/each}}
+        </span>
+        <a class="paginate_next">
+            <img src='${site_url}images/pagin_next.jpg'>
+        </a>
+    {{/if}}
+</div>

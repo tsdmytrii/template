@@ -1,0 +1,50 @@
+
+<div class="btn btn-primary add_language"><i class="glyphicon glyphicon-plus"></i> ${lang.lang.add}</div>
+
+{{if our_data && !our_data.message}}
+
+    <table id="datatable" class="table table-bordered table-hover" style="margin-top: 15px;">
+        <thead>
+            <tr>
+                <th style="width: 5%;" class="id">ID</th>
+                <th style="width: 35%;" class="name">${lang.name}</th>
+                <th style="width: 10%;" class="name">${lang.lang.iso_code}</th>
+                <th style="width: 25%;" class="name">${lang.position}</th>
+                <th style="width: 10%;" class="action">${lang.action}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{if our_data}}
+
+                {{each($i, $val) our_data.data}}
+                    <tr id="language_${$val.id}">
+                        <td>${$val.id}</td>
+                        <td>${$val.name}</td>
+                        <td>
+                            <span class="label label-success">
+                                ${$val.iso_code}
+                            </span>
+                        </td>
+                        <td>${$val.position}</td>
+                        <td>
+                            <div class="language_icon_wrap pull-right" data-language_id="${$val.id}">
+                                <div class='btn btn-default btn-xs'>
+                                    <i class="glyphicon glyphicon-pencil edit_language" title="${lang.lang.upd}"></i>
+                                </div>
+                                <div class='btn btn-danger btn-xs'>
+                                    <i class="glyphicon glyphicon-trash delete_language" title="${lang.lang.remove}"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+
+            {{/if}}
+
+        </tbody>
+    </table>
+
+{{else}}
+    <h3>Код ошибки: ${our_data.message}</h3>
+{{/if}}

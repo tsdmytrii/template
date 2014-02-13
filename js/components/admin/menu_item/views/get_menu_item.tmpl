@@ -1,0 +1,58 @@
+{{if our_data && our_data.length}}
+    <div class="navbar navbar-inverse navBarMenuItem">
+        <ul class="nav navbar-nav">
+            {{each($i, $value) our_data}}
+                {{if $value.parent_id == 0}}
+                    <li class="header_menu_item" data-menu_item_id="${$value.id}" data-lvl="0">
+                        <a class="new_component" title="{{if $value.lang}}${$value.lang.value}{{/if}}" href="${base_url}admin/{{if $value.component_type}}${$value.component_type.id}/${$value.component_type.name}/${component.content_id}{{else}}0{{/if}}">
+                            {{if $value.lang}}${$value.lang.value}{{/if}}
+                        </a>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+{{/if}}
+
+<div data-menu_block_id="${menu_block_id}" style="margin: 0 0 10px 20px;" class="btn btn-primary add_menu_item button"><i class="glyphicon glyphicon-plus"></i> ${lang.menu_item.add}</div>
+
+
+{{if our_data && our_data.length}}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>${lang.menu_item.name}</th>
+            <th>${lang.position}</th>
+            <th>${lang.menu_item.main}</th>
+            <th>${lang.action}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{each($i, $val) our_data}}
+            <tr  class="menu_item_wrap" data-menu_item_id="${$val.id}">
+                <td>${$val.id}</td>
+                <td>
+                    <div>
+                        <a {{if $val.lvl != 0}}style="margin-left: ${$val.lvl*20}px"{{/if}} class="new_component" title="{{if $val.lang}}${$val.lang.value}{{/if}}" href="${base_url}admin/{{if $val.component_type}}${$val.component_type.id}/${$val.component_type.name}/${component.content_id}{{else}}0{{/if}}">
+                            {{if $val.lang}}
+                                ${$val.lang.value}
+                            {{/if}}
+                        </a>
+                    </div>
+                </td>
+                <td>${$val.position}</td>
+                <td>{{if parseInt($val.main) == 1}}${$data.lang.yes}{{else}}${$data.lang.no}{{/if}}</td>
+                <td>
+                    <div class='btn btn-default btn-xs'>
+                        <i title="${$data.lang.menu_item.upd}" class="glyphicon glyphicon-pencil edit_menu_item"></i>
+                    </div>
+                    <div class='btn btn-danger btn-xs'>
+                        <i title="${$data.lang.menu_item.remove}" class="glyphicon glyphicon-trash delete_menu_item"></i>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/if}}

@@ -1,0 +1,268 @@
+<div style="padding: 20px;">
+
+    <div class="btn-group">
+        <a href="productBlockFormWrap" class="btn active productBlockTab">Основная информация</a>
+        <a href="productFormsWrap" class="btn productBlockTab {{if !our_data}}disabled{{/if}}">Товары в блоке</a>
+    </div>
+
+    <div id="formsWrap">
+
+        <div id="productBlockFormWrap" class="productBlockFormWrap cur">
+            <form class="form-horizontal productBlockInfoForm">
+
+                <input type="hidden" name="product_block_id" id="product_block_id" value="{{if our_data}}${our_data.id}{{/if}}"/>
+
+                <table class="table table-striped table-bordered table-hover table-condensed" style="margin-top: 15px; ">
+                    <thead class="table-head">
+                        <tr>
+                            <th>
+                                Позиция и связаный компонент
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                <div class="control-group" style="margin-top: 10px;">
+                                    <div class="control-label">
+                                        <label for="position">Позиция:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="number" name="position" value="{{if our_data}}${our_data.position}{{/if}}" />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group" style="margin-top: 10px;">
+                                    <div class="control-label">
+                                        <label for="row_quantity">Количество строк:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="text" name="row_quantity" value="{{if our_data}}${our_data.row_quantity}{{/if}}" />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="column_quantity">Количество колонок:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="text" name="column_quantity" value="{{if our_data}}${our_data.column_quantity}{{/if}}" />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="category">Выводить категорию:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="checkbox" name="category" value="1" {{if our_data}}{{if parseInt(our_data.category) === 1}}checked{{/if}}{{/if}} />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="producer">Выводить производителя:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="checkbox" name="producer" value="1" {{if our_data}}{{if parseInt(our_data.producer) === 1}}checked{{/if}}{{/if}} />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="short_description">Выводить короткое описание:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="checkbox" name="short_description" value="1" {{if our_data}}{{if parseInt(our_data.short_description) === 1}}checked{{/if}}{{/if}} />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="price">Выводить цену:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="checkbox" name="price" value="1" {{if our_data}}{{if parseInt(our_data.price) === 1}}checked{{/if}}{{/if}} />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="sale_price">Выводить цену продажу:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input type="checkbox" name="sale_price" value="1" {{if our_data}}{{if parseInt(our_data.sale_price) === 1}}checked{{/if}}{{/if}} />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="display_place">Место, где блок будет выведен:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <select name="display_place">
+                                            <option selected="selected">Выберите опцию</option>
+                                            <option value="1">Главная страница</option>
+                                            <option value="2">Категории</option>
+                                            <option value="3">Статическая страница</option>
+                                        </select>
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        <label for="view">Путь к вьюшке:</label>
+                                    </div>
+                                    <div class="controls">
+                                        <input id="component_name" type="text" name="view" value="{{if our_data}}${our_data.view}{{/if}}" />
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+
+            <div class="clear"></div>
+
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead class="table-head">
+                    <tr>
+                        <th colspan="2">
+                            Языки
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <div class="btn-group">
+
+                                {{each($i, $val) lang}}
+                                    <a href="langContent${$val.id}" class="btn {{if $i == 0}}active{{/if}} productBlockLangTab">${$val.name}</a>
+                                {{/each}}
+
+                            </div>
+
+
+                            <div class="productBlockLangWrap">
+
+                                {{each($i, $val) lang}}
+
+                                    <div id="langContent${$val.id}" class="content_lang {{if $i == 0}}current{{/if}}">
+                                        <form class="productBlockForm form-horizontal">
+                                            <input class="lang_id" type="hidden" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].id}{{/if}}{{else}}0{{/if}}" name="product_block_lang_id"/>
+                                            <input type="hidden" value="${$val.id}" name="language_id"/>
+
+                                            <div class="control-group" style="margin-top: 15px;">
+                                                <div class="control-label">
+                                                    <label for="name">Название:</label>
+                                                </div>
+                                                <div class="controls">
+                                                    <input type="text" class="name" name="name" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].name}{{/if}}{{/if}}"/>
+                                                    <span class="help help-block"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <div class="control-label">
+                                                    <label for="description">Описание:</label>
+                                                </div>
+                                                <div class="controls">
+                                                    <textarea name="description">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].description}{{/if}}{{/if}}</textarea>
+                                                    <span class="help help-block"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-actions">
+                                                <div class="pull-right">
+                                                    <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+                                                    <div class="btn cancel">Отмена</div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                {{/each}}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div id="productFormsWrap" class="productBlockFormWrap">
+
+            <div id="addRelProduct" class="btn btn-primary" style="margin-top: 15px;">Добавить модификацию</div>
+
+            <div id="productsContent" style="margin-top: 15px;">
+
+
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead class="table-head">
+                        <tr>
+                            <th colspan="2">
+                                Связанные модификации:
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id='productsForm'>
+
+                                {{if our_data}}
+                                    {{if our_data.modifications}}
+
+                                        {{each($mod_i, $mod_val) our_data.modifications}}
+
+                                            <form class="form-inline productForm">
+
+                                                <div class="control-group">
+                                                    <label class="control-label" for="product_modification_id">Название модификации:</label>
+                                                    <div class="controls">
+                                                        <input disabled="" value="${$mod_val[0].product_modification_name}" class='productName' type="text" name="value" />
+                                                        <input type="hidden" class="productId" value="${$mod_val[0]._id['$id']}" name="product_modification_id" />
+                                                        <input type="hidden" class="relatedFieldId" value="${$mod_val['related_field_id']}" name="related_field_id" />
+                                                        <span class="help"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="btn deleteProduct">
+                                                        <i class="icon-trash" title="Удалить модификацию"></i>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        {{/each}}
+
+                                    {{/if}}
+                                {{/if}}
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

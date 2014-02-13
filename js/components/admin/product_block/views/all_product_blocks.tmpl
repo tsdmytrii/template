@@ -1,0 +1,14 @@
+{{if our_data}}
+    {{each($data_key, $data_value) our_data}}
+        <tr class="productBlockComponent" data-mini_block_id="${$data_value.id}">
+            <td>${$data_value.id}</td>
+            <td>${$data_value.lang[pref].name}</td>
+            <td>
+                <div data-product_block_id="${$data_value.id}" class="product_block_icon_wrap pull-right">
+                    <div class="btn btn-xs btn-default editProductBlock"><i class="glyphicon glyphicon-pencil" title="${$data.lang.productBlock.upd}"></i></div>
+                    <div class="btn btn-xs btn-danger deleteProductBlock"><i class="glyphicon glyphicon-trash" title="${$data.lang.productBlock.remove}"></i></div>
+                </div>
+            </td>
+        </tr>
+    {{/each}}
+{{/if}}

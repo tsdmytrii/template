@@ -1,0 +1,79 @@
+<div style="padding: 20px;">
+
+    <div class="btn-group">
+
+        <a href="#groupCommon" class="btn btn-default active tab">${lang.group.info}</a>
+
+        <a href="#permissions" class="btn btn-default tab{{if !our_data}} disabled{{/if}}">${lang.group.permissions}</a>
+
+    </div>
+
+
+    <div id="groupContent" style="padding-top: 15px;">
+
+        <div id="groupCommon">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">${lang.group.info}</h3>
+                </div>
+                <div class="panel-body">
+
+                    <form class="groupForm form-horizontal">
+                        <input type="hidden" class="group_id" name="group_id" value="{{if our_data}}${our_data.id}{{/if}}">
+
+                        <div class="form-group">
+                            <label for="clear_name" class="col-md-3 control-label">${lang.group.name}</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="clear_name" value="{{if our_data}}${our_data.clear_name}{{/if}}"/>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-3 control-label">${lang.group.sys_name}</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="name" value="{{if our_data}}${our_data.name}{{/if}}"/>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="col-md-3 control-label">${lang.group.description}</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" name="description">{{if our_data}}${our_data.description}{{/if}}</textarea>
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admin_access" class="col-md-3 control-label">${lang.group.admin_access}</label>
+                            <div class="col-md-8">
+                                <input type="checkbox" value="1" name="admin_access" {{if our_data}}{{if parseInt(our_data.admin_access) == 1}}checked{{/if}}{{/if}} />
+                                <span class="help help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class='pull-right'>
+                                <button class="btn btn-primary" type="submit">${lang.save}</button>
+                                <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="permissions" style="display: none;">
+
+            <div id='permissionWrap'></div>
+
+        </div>
+
+    </div>
+
+</div>

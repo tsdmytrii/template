@@ -1,0 +1,169 @@
+<div id="setMenuItemWrap" style="margin: 15px 0 0 0;">
+
+    <div id="newMenuItem" class="menuItemTab current_set">
+
+        <form class="form-horizontal" id="menuItemDataForm">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">${lang.menu_item.info}</h3>
+                </div>
+                <div class="panel-body">
+
+                    <input type="hidden" id="menu_item_id" value="{{if our_data}}${our_data.id}{{/if}}" name="id" />
+                    <input type="hidden" value="{{if menu_block_id}}${menu_block_id}{{/if}}" name="menu_block_id" />
+
+                    {{if our_data}}
+                        <input id="component_id" type="hidden" value="${our_data.component.id}" name="component_id">
+                        <input id="component_type_id" type="hidden" value="${our_data.component.component_type_id}" name="component_type_id">
+                    {{/if}}
+
+                    <div class="form-group">
+                        <label for="parent_id" class="col-md-3 control-label">${lang.menu_item.parent}:</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="parent_id">
+                                <option value="0">No parent</option>
+                                {{if parent}}
+                                    {{each($i, $value) parent}}
+                                        {{if our_data}}
+                                            {{if our_data.id != $value.id}}
+                                                <option value="${$value.id}" {{if our_data.parent_id == $value.id}}selected{{/if}}>{{if $value.lvl != '1'}}${$value.lvl_sign}{{/if}}${$value.lang.value}</option>
+                                            {{/if}}
+                                        {{else}}
+                                            <option value="${$value.id}">{{if $value.lvl != '1'}}${$value.lvl_sign}{{/if}}${$value.lang.value}</option>
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            </select>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parent_id" class="col-md-3 control-label">${lang.menu_item.component}
+                            {{if our_data}}
+                                {{if component}}
+                                    {{each($i, $value) component}}
+                                        {{if parseInt(our_data.component.component_type_id) == $value.id}}
+                                            &nbsp;- <span class="component_name">${$value.psevdo_name}</span>
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/if}}:
+                        </label>
+                        <div class="col-md-8">
+
+                            {{if our_data}}
+                                {{if our_data.component.component_type_id}}
+                                    <strong class="component_name form-control">${our_data.component.name} <i title="${lang.menu_item.disconnect}" class="glyphicon glyphicon-resize-full disconect_menu_item"></i></strong>
+                                {{/if}}
+                                <div class="component_name_search" {{if our_data.component.component_type_id}}style="display: none;"{{/if}}>
+                                    <input class="form-control" type="text" id="component_name" name="component_name_search" value="">
+                                </div>
+                            {{else}}
+                                <select class="form-control" name="component_type_id" id="component_id" >
+                                    <option value="0">No component</option>
+
+                                    {{if component}}
+                                        {{each($i, $value) component}}
+                                            {{if !$value.exist && parseInt(display) == 1}}
+                                                <option value="${$value.id}">${$value.psevdo_name}</option>
+                                            {{/if}}
+                                        {{/each}}
+                                    {{/if}}
+
+                                </select>
+                            {{/if}}
+
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="position" class="col-md-3 control-label">${lang.position}</label>
+                        <div class="col-md-8">
+                            <input type="text" name="position" value="{{if our_data}}${our_data.position}{{/if}}" class="form-control"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="main" class="col-md-3 control-label">${lang.menu_item.main}?</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="main" value="1" class="checkbox" {{if our_data}}{{if parseInt(our_data.main) == 1}}checked{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inner_navigation" class="col-md-3 control-label">${lang.menu_item.neighborhood}?</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="inner_navigation" value="1" {{if our_data}}{{if our_data.inner_navigation == "1"}}checked{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="child_inner_navigation" class="col-md-3 control-label">${lang.menu_item.open_in_tab}?</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="child_inner_navigation" value="1" class="checkbox" {{if our_data}}{{if our_data.child_inner_navigation == "1"}}checked{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.menu_item.name}</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="btn-group">
+                    {{each($i, $val) langs}}
+                        <a href="#menuItemLang_${$val.iso_code}" class="btn tab btn-default {{if $i == 0}}active{{/if}} menuItemLangTab">${$val.name}</a>
+                    {{/each}}
+                </div>
+
+                <div id="menuItemLangContent" style="margin-top: 15px;">
+
+                    {{each($i, $val) langs}}
+                        <div id="menuItemLang_${$val.iso_code}" class="content_lang" {{if $i != 0}}style="display: none;"{{/if}}>
+
+                            <form class="form-horizontal menuItemForm">
+
+                                <input class="lang_id" type="hidden" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].id}{{/if}}{{else}}0{{/if}}" name="menu_item_lang_id"/>
+                                <input type="hidden" value="${$val.id}" name="language_id"/>
+
+                                <div class="form-group">
+                                    <label for="position" class="col-md-3 control-label">${lang.menu_item.name}:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].value}{{/if}}{{/if}}" name="value">
+                                        <span class="help help-block"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <div class='pull-right'>
+                                        <button class="btn btn-primary" type="submit">${lang.save}</button>
+                                        <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                            </form>
+
+                        </div>
+
+                    {{/each}}
+
+                </div>
+            </div>
+        </div>
+   </div>
+
+</div>

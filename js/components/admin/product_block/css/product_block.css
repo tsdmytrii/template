@@ -1,0 +1,11 @@
+.productBlockFormWrap {
+    display: none;
+}
+
+.productBlockFormWrap.cur {
+    display: block;
+}
+
+.productForm .productName {
+    color: #000;
+}

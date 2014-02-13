@@ -1,0 +1,37 @@
+.compTypeTabCont {
+    display: none;
+}
+
+.compTypeTabCont.current {
+    display: block;
+}
+
+#componentTypeManipulation .paginate a, #componentTypeManipulation .paginate span {
+    color: #000;
+}
+
+#componentTypeManipulation .btn-group {
+    float: left;
+}
+
+#paginator {
+    float: right;
+    margin: 5px 0 0 20px;
+}
+
+#addComponentType {
+    float: left;
+}
+
+.componentTypeQuantity {
+    float: left;
+    margin: 5px 10px 0 20px;
+}
+
+.functionForm .control-label, .functionForm .help {
+    display: inline;
+}
+
+.functionForm {
+    margin-bottom: 10px;
+}

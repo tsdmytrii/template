@@ -1,0 +1,9 @@
+uploads/files/*
+uploads/images/*
+idea
+.idea
+application/logs/*
+application/cache/*
+nbproject
+userguide
+

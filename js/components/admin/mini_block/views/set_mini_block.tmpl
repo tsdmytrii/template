@@ -1,0 +1,187 @@
+<div class="miniBlockFormWrap">
+    <form class="form-horizontal miniBlockInfoForm">
+
+        <input type="hidden" name="mini_block_id" class="mini_block_id" value="{{if our_data}}${our_data.id}{{/if}}"/>
+        <input type="hidden" name="content_id" class="content_id" value="{{if our_data}}${our_data.component.content_id}{{/if}}"/>
+        <input type="hidden" name="component_id" class="component_id" value="{{if our_data}}${our_data.component_id}{{/if}}"/>
+        <input type="hidden" name="placeholder_id" class="placeholder_id" value="{{if placeholder_id}}${placeholder_id}{{/if}}"/>
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.miniBlock.positionAndRelatedComponent}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="position">${lang.miniBlock.position}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="place" type="text" name="position" value="{{if our_data}}${our_data.position}{{/if}}" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="component">${lang.miniBlock.componentName}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="component_name" type="text" name="component" value="{{if our_data}}${our_data.component.name}{{/if}}" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="view">${lang.miniBlock.pathToViewFile}</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="component_view" type="text" name="view" value="{{if our_data}}${our_data.view}{{/if}}" />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group useBgWrap" style=' {{if !our_data}} display: none; {{/if}} '>
+                    <label class="col-md-3 control-label" for="component">${lang.miniBlock.useTheBackground}</label>
+                    <div class="col-md-8">
+                        <input class="form-control miniBlockImg" type="checkbox" name="img" value="1" {{if our_data}}{{if parseInt(our_data.img) == 1}}checked{{/if}}{{/if}} />
+                        <span class="help help-block"></span>
+                    </div>
+                </div>
+
+                <div class="bgImg" style="{{if our_data}}{{if parseInt(our_data.img) == 0}}display: none;{{/if}}{{else}}display: none;{{/if}}">
+                    <h4>Фоновая картинка</h4>
+
+                    <div class="clear"></div>
+
+                    <input type="file" id="img_upload" name="Filedata" />
+
+                    <div class="clear"></div>
+
+                    <div id="logo_list_wrap">
+
+                        <div class="miniBlockImgWrap">
+                            {{if our_data }}
+                            {{if our_data.bg}}
+                            <img src="${site_url}uploads/images/${our_data.bg.name}">
+                            <div class="clear"></div>
+                            <i style="margin: 5px auto;" class="icon-trash menu_icon delete_img" data-mini_block_img_id="${our_data.bg.id}"></i>
+                            <div class="clear"></div>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+                </div>
+
+                <div class="tooltipImg" style="{{if !our_data}}display: none;{{/if}}">
+                    <h4>Всплывающая картинка</h4>
+
+                    <div class="clear"></div>
+
+                    <input type="file" id="tooltip_upload" name="Filedata" />
+
+                    <div class="clear"></div>
+
+                    <div id="tooltip_list_wrap">
+
+                        <div class="miniBlockToolTipWrap">
+                            {{if our_data}}
+                            {{if our_data.tooltip}}
+                            <img src="${site_url}uploads/images/${our_data.tooltip.name}">
+                            <div class="clear"></div>
+                            <i style="margin: 5px auto;" class="icon-trash menu_icon deleteToolTip" data-tooltip_id="${our_data.tooltip.id}"></i>
+                            <div class="clear"></div>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.miniBlock.componentBehaviour}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="contentBehaviorForm"></div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">${lang.miniBlock.generalInfo}</h3>
+        </div>
+
+
+        <div class="panel-body">
+
+            <div class="btn-group">
+
+                {{each($i, $val) langs}}
+                <a href="langContent${$val.id}" class="btn {{if $i == 0}}active{{/if}} miniBlockTab">${$val.name}</a>
+                {{/each}}
+
+            </div>
+
+
+            <div class="miniBlockLangWrap">
+
+                {{each($i, $val) langs}}
+
+                    <div id="langContent${$val.id}" class="content_lang {{if $i == 0}}current{{/if}}">
+
+                        <form class="miniBlockForm form-horizontal">
+
+                            <input class="lang_id" type="hidden" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].id}{{/if}}{{else}}0{{/if}}" name="mini_block_lang_id"/>
+                            <input type="hidden" value="${$val.id}" name="language_id"/>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">${lang.miniBlock.miniBlockName}</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="name form-control" name="name" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].name}{{/if}}{{/if}}"/>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="button_name">${lang.miniBlock.miniBlockButtonName}</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" name="button_name" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].button_name}{{/if}}{{/if}}"/>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" type="submit">${lang.save}</button>
+                                    <div class="btn cancel">${lang.cancel}</div>
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </form>
+                    </div>
+
+                {{/each}}
+            </div>
+
+        </div>
+
+    </div>
+</div>

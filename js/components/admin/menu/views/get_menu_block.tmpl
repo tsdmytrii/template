@@ -1,0 +1,27 @@
+{{if our_data}}
+    {{each($i, $val) our_data}}
+
+        <tr>
+            <td>${$val.id}</td>
+            <td>
+                <a class="new_component" title="${$val.name}" href="${base_url}admin/9/menu_item/${$val.id}">
+                    ${$val.name}
+                </a>
+            </td>
+            <td>${$val.role}</td>
+            <td>${$val.position}</td>
+            <td>
+                <div data-menu_block_id="${$val.id}" class="menu_block_icon_wrap pull-right">
+
+                    <div class='btn btn-default btn-xs editMenuBlock'>
+                        <span class="glyphicon glyphicon-pencil" title="${lang.menu.upd}"></span>
+                    </div>
+                    <div class='btn btn-danger btn-xs deleteMenuBlock'>
+                        <span class="glyphicon glyphicon-trash" title="${lang.menu.remove}"></span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    {{/each}}
+{{/if}}

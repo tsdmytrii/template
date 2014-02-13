@@ -1,0 +1,27 @@
+{{if our_data}}
+    {{each($i, $val) our_data}}
+        <tr>
+            <td>${$val.id}</td>
+            <td>${$val.lang[pref].name}</td>
+            <td>${$val.row_quantity}</td>
+            <td>${$val.column_quantity}</td>
+            <td>
+                {{if parseInt($val.display_place) == 1}}
+                    На главной
+                {{else parseInt($val.display_place) == 2}}
+                    В категории
+                {{else parseInt($val.display_place) == 3}}
+                    На статической странице
+                {{else}}
+                    Блок не будет показан
+                {{/if}}
+            </td>
+            <td>
+                <div data-product_block_id="${$val.id}" class="product_block_icon_wrap pull-right">
+                    <i class="icon-pencil menu_icon editProductBlock" title="Редактировать блок с товарами"></i>
+                    <i class="icon-trash menu_icon deleteProductBlock" title="Удалить блок с товарами"></i>
+                </div>
+            </td>
+        </tr>
+    {{/each}}
+{{/if}}

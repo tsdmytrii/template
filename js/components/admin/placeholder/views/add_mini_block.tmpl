@@ -1,0 +1,22 @@
+<form class="form-inline miniBlockForm">
+
+   <input type="hidden" value="${placeholder_id}" name="placeholder_id" />
+
+    <div class="form-group">
+       <label class="sr-only" for="key">${lang.placeholder.miniBlockName}</label>
+       <div class="controls">
+           <input class="miniBlockName form-control" value="" type="text" name="name" placeholder="ololo" />
+           <input class="miniBlockId" value="" type="hidden" name="mini_block_id" />
+           <span class="help"></span>
+       </div>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-default saveMiniBlock">
+            <span class="glyphicon glyphicon-ok" title="${lang.placeholder.saveRelationWithMiniBlock}"></span>
+        </button>
+        <button type="button" class="btn btn-danger deleteMiniBlock">
+            <span class="glyphicon glyphicon-trash" title="${lang.placeholder.removeRelationWithMiniBlock}"></span>
+        </button>
+    </div>
+
+</form>

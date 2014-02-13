@@ -1,0 +1,146 @@
+<div class="btn-group">
+
+    <a href="#componentTypeContent" class="btn btn-default active tab">${lang.comp_type.main_info}</a>
+
+    <a href="#componentFunctions" class="btn btn-default tab{{if !our_data}} disabled{{/if}}">${lang.comp_type.functions}</a>
+
+</div>
+
+<div id="compWrap" style="margin: 15px 0 0 0;">
+
+    <div class="current compTypeTabCont" id="componentTypeContent">
+        <form class="form-horizontal" id="componentTypeForm">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">${lang.comp_type.info}</h3>
+                </div>
+                <div class="panel-body">
+
+                    <input type="hidden" name="id" id="component_type_id" value="{{if our_data}}${our_data.id}{{/if}}"/>
+
+                    <div class="form-group">
+                        <label for="psevdo_name" class="col-md-3 control-label">${lang.comp_type.clear_name}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="psevdo_name" value="{{if our_data}}${our_data.psevdo_name}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-md-3 control-label">${lang.comp_type.name}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="name" value="{{if our_data}}${our_data.name}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="library" class="col-md-3 control-label">${lang.comp_type.library}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="library" value="{{if our_data}}${our_data.library}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin_client_controller" class="col-md-3 control-label">${lang.comp_type.admin_jmvc}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="admin_client_controller" value="{{if our_data}}${our_data.admin_client_controller}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client_controller" class="col-md-3 control-label">${lang.comp_type.user_jmvc}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="client_controller" value="{{if our_data}}${our_data.client_controller}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="server_controller" class="col-md-3 control-label">${lang.comp_type.server_controller}:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="server_controller" value="{{if our_data}}${our_data.server_controller}{{/if}}"/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="display" class="col-md-3 control-label">${lang.comp_type.system}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="display" value="2" {{if our_data}}{{if parseInt(our_data.display) == 0}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="multi" class="col-md-3 control-label">${lang.comp_type.unique}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="multi" value="2" {{if our_data}}{{if our_data.multi == 0}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="button_panel" class="col-md-3 control-label">${lang.comp_type.button_panel}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="button_panel" value="1" {{if our_data}}{{if our_data.button_panel == 1}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="settings" class="col-md-3 control-label">${lang.comp_type.settings}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="settings" value="1" {{if our_data}}{{if our_data.settings == 1}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minimise" class="col-md-3 control-label">${lang.comp_type.minimise}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="minimise" value="1" {{if our_data}}{{if our_data.minimise == 1}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maximise" class="col-md-3 control-label">${lang.comp_type.maximise}:</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="minimise" value="1" {{if our_data}}{{if our_data.minimise == 1}}checked="checked"{{/if}}{{/if}}/>
+                            <span class="help help-block"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <div class='pull-right'>
+                    <button class="btn btn-primary" type="submit">${lang.save}</button>
+                    <div class="btn btn-default cancel" data-dismiss="modal">${lang.cancel}</div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </form>
+    </div>
+
+    <div class="compTypeTabCont" id="componentFunctions">
+
+        <div class='btn btn-primary' id='addFunction'>${lang.comp_type.add_function}</div>
+
+        <div class="panel panel-primary" style="margin-top: 15px;">
+            <div class="panel-heading">
+                <h3 class="panel-title">${lang.comp_type.comp_functions}</h3>
+            </div>
+            <div class="panel-body function_forms"></div>
+        </div>
+
+    </div>
+
+</div>

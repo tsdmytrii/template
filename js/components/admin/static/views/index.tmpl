@@ -1,0 +1,140 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">${lang.static_comp.date}</h3>
+    </div>
+    <div class="panel-body">
+
+        <form class="form-horizontal" id="staticDataForm">
+
+            <div class="form-group">
+                <label for="date" class="col-md-3 control-label">${lang.static_comp.date}:</label>
+                <div class="col-md-3">
+                    <div class='input-group date' id='date'>
+                        <input name="date" type='text' class="form-control" value="${our_data.date}"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <span class="help help-block"></span>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<div id="component_content">
+
+    <div class="btn-group">
+
+        {{each($i, $val) langs}}
+            <a href="#lang_${$val.iso_code}" class="btn btn-default tab{{if $i == 0}} active{{/if}}">${$val.name}</a>
+        {{/each}}
+
+    </div>
+
+    <div id="content_lang_wrap" style="margin-top: 15px;">
+
+        {{each($i, $val) langs}}
+            <div id="lang_${$val.iso_code}" class="content_lang" {{if $i != 0}}style="display: none;"{{/if}}>
+                <form class="static_comp_form form-horizontal">
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">${lang.static_comp.info}</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <input type="hidden" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].id}{{/if}}{{/if}}" name="id"/>
+                            <input class="language_id" type="hidden" value="${$val.id}" name="language_id"/>
+
+                            <div class="form-group">
+                                <label for="title" class="col-md-3 control-label">${lang.static_comp.title}:</label>
+                                <div class="col-md-9">
+                                    <input id='name_${$val.iso_code}' type="text" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].title}{{/if}}{{/if}}" name="title" class="form-control">
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="author" class="col-md-3 control-label">${lang.static_comp.author}:</label>
+                                <div class="col-md-9">
+                                    <input type="text" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].author}{{/if}}{{/if}}" name="author" class="form-control">
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description" class="col-md-3 control-label">${lang.static_comp.description}:</label>
+                                <div class="col-md-9">
+                                    <textarea style="width:350px;height:250px" class="description content_desc" name="description">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].description}{{/if}}{{/if}}</textarea>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">${lang.static_comp.seo}</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label for="link" class="col-md-3 control-label">${lang.static_comp.link}:</label>
+                                <div class="col-md-9">
+                                    <input class="link_id" type="hidden" value="{{if our_data}}{{if our_data.links && our_data.links[$val.iso_code] }}${our_data.links[$val.iso_code].id}{{/if}}{{/if}}" name="link_id"/>
+                                    <input class="form-control" id="link_${$val.iso_code}" type="text" value="{{if our_data}}{{if our_data.links && our_data.links[$val.iso_code] }}${our_data.links[$val.iso_code].link}{{/if}}{{/if}}" name="link"/>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seo_title" class="col-md-3 control-label">${lang.static_comp.seo_title}:</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="seo_title" value="{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].seo_title}{{/if}}{{/if}}" />
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="key_words" class="col-md-3 control-label">${lang.static_comp.key_words}:</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="key_words">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].key_words}{{/if}}{{/if}}</textarea>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seo_description" class="col-md-3 control-label">${lang.static_comp.seo_description}:</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="seo_description">{{if our_data}}{{if our_data.lang && our_data.lang[$val.iso_code] }}${our_data.lang[$val.iso_code].seo_description}{{/if}}{{/if}}</textarea>
+                                    <span class="help help-block"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary pull-right" type="submit">${lang.save}</button>
+                    </div>
+
+                    <div class="clear"></div>
+
+                </form>
+
+            </div>
+
+
+        {{/each}}
+
+    </div>
+
+</div>
+
+<div class="clear"></div>
